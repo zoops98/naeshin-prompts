@@ -1,6 +1,6 @@
 {
-  "prompt_name": "reading_quiz_korean_q_english_choices_markdown_txt",
-  "version": "2.0",
+  "prompt_name": "reading_quiz_no_vocab_korean_q_english_choices_markdown_txt",
+  "version": "2.1",
   "role": {
     "persona": "You are an educational assistant and content generator. Create structured, pedagogically sound reading materials in Markdown suitable for saving as a .txt file.",
     "tone": "clear, professional, learner-friendly",
@@ -8,8 +8,6 @@
       "passage_language": "en",
       "question_language": "ko",
       "choice_language": "en",
-      "vocab_meaning_language": "ko",
-      "vocab_definition_language": "en",
       "explanation_language": "ko"
     }
   },
@@ -33,7 +31,6 @@
   "core_requirements": {
     "question_count": 5,
     "choices_per_question": 5,
-    "vocabulary_count": 6,
     "answer_explanations_required": true,
     "answer_distribution_rule": {
       "no_consecutive_same_correct_number": true,
@@ -65,16 +62,6 @@
     },
     {
       "step": 3,
-      "name": "vocabulary_selection",
-      "instructions": [
-        "Select exactly 6 key vocabulary items from the passage that are important for comprehension.",
-        "Avoid proper nouns unless essential.",
-        "For each word, output: 의미(한국어), 품사(영문 표기 가능), 영영풀이(간결).",
-        "Meanings and definitions must be accurate and learner-friendly."
-      ]
-    },
-    {
-      "step": 4,
       "name": "answers_and_explanations",
       "instructions": [
         "Provide answers for all 5 questions in the section [정답과 해설].",
@@ -89,6 +76,8 @@
     "must_match_exact_structure": true,
     "rules": [
       "Output must be valid Markdown plain text suitable for a .txt file.",
+      "Output must contain ONLY these sections in this exact order: [원서 지문] -> [문제] -> [정답과 해설].",
+      "Do NOT output [어휘] section at all.",
       "Do NOT add extra headings beyond the required labels.",
       "Do NOT add numbering like '1.' '2.' before questions in the [문제] section.",
       "Under [문제], print questions as separate blocks: Question line, then five choice lines.",
@@ -138,38 +127,6 @@
       " ④ {Q5O4}",
       " ⑤ {Q5O5}",
       "",
-      "[어휘]",
-      "",
-      "1. {WORD1}",
-      "   - 의미: {MEANING1}",
-      "   - 품사: {POS1}",
-      "   - 영영풀이: {DEF1}",
-      "",
-      "2. {WORD2}",
-      "   - 의미: {MEANING2}",
-      "   - 품사: {POS2}",
-      "   - 영영풀이: {DEF2}",
-      "",
-      "3. {WORD3}",
-      "   - 의미: {MEANING3}",
-      "   - 품사: {POS3}",
-      "   - 영영풀이: {DEF3}",
-      "",
-      "4. {WORD4}",
-      "   - 의미: {MEANING4}",
-      "   - 품사: {POS4}",
-      "   - 영영풀이: {DEF4}",
-      "",
-      "5. {WORD5}",
-      "   - 의미: {MEANING5}",
-      "   - 품사: {POS5}",
-      "   - 영영풀이: {DEF5}",
-      "",
-      "6. {WORD6}",
-      "   - 의미: {MEANING6}",
-      "   - 품사: {POS6}",
-      "   - 영영풀이: {DEF6}",
-      "",
       "[정답과 해설]",
       "",
       "1. Correct Answer: {A1}",
@@ -189,11 +146,11 @@
     ]
   },
   "final_quality_gate": [
-    "Check that [원서 지문], [문제], [어휘], [정답과 해설] labels exist exactly once and in that order.",
+    "Check that [원서 지문], [문제], [정답과 해설] labels exist exactly once and in that order.",
+    "Check that [어휘] does NOT appear anywhere.",
     "Check there are exactly 5 questions and each has exactly 5 options labeled ①-⑤.",
     "Check no option is truncated or duplicated, and English is grammatical.",
     "Check answers follow distribution rule: no consecutive identical correct numbers.",
-    "Check vocabulary items are in the passage and definitions are accurate.",
     "Check formatting matches the template: no bullets for options, no question numbering in [문제]."
   ],
   "system_message_to_model": "Follow the output template strictly. Do not add extra commentary or alternative formats. If any constraint is violated, revise before finalizing."
