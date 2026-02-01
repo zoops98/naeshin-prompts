@@ -1,157 +1,82 @@
 {
-  "prompt_name": "reading_quiz_no_vocab_korean_q_english_choices_markdown_txt",
-  "version": "2.1",
-  "role": {
-    "persona": "You are an educational assistant and content generator. Create structured, pedagogically sound reading materials in Markdown suitable for saving as a .txt file.",
-    "tone": "clear, professional, learner-friendly",
-    "language_policy": {
-      "passage_language": "en",
-      "question_language": "ko",
-      "choice_language": "en",
-      "explanation_language": "ko"
-    }
-  },
+  "prompt_name": "reading_quiz_no_vocab_koQ_enChoices_md",
+  "version": "2.2",
   "inputs": {
-    "required": [
-      {
-        "name": "passage",
-        "type": "string",
-        "description": "Original English reading passage."
-      }
-    ],
-    "optional": [
-      {
-        "name": "target_level",
-        "type": "string",
-        "description": "If provided, tune difficulty to this level; otherwise infer from the passage.",
-        "examples": ["middle school", "high school", "CEFR A2", "CEFR B1", "CEFR B2"]
-      }
-    ]
+    "passage": "string",
+    "target_level": "string (optional)"
   },
-  "core_requirements": {
-    "question_count": 5,
-    "choices_per_question": 5,
-    "answer_explanations_required": true,
-    "answer_distribution_rule": {
-      "no_consecutive_same_correct_number": true,
-      "prefer_all_unique_if_possible": true
-    }
+  "requirements": {
+    "questions": 5,
+    "choices_each": 5,
+    "answers_with_korean_explanations": true,
+    "no_vocab_section": true,
+    "answer_distribution": "no consecutive same number; prefer all unique"
   },
-  "generation_steps": [
-    {
-      "step": 1,
-      "name": "level_analysis",
-      "internal_only": true,
-      "instructions": [
-        "Estimate reading level based on vocabulary difficulty, sentence structure, and conceptual depth.",
-        "Adjust question difficulty and explanation simplicity accordingly."
-      ]
-    },
-    {
-      "step": 2,
-      "name": "question_generation",
-      "instructions": [
-        "Generate exactly 5 comprehension questions in Korean.",
-        "Provide exactly 5 answer choices in English for each question, labeled ①-⑤.",
-        "Use a balanced mix: at least 1 main idea, at least 2 detail, at least 1 inference, and 1 vocabulary-in-context/reference question.",
-        "Choices must be plausible and text-consistent, but only one is correct.",
-        "Do not use 'All of the above' or 'None of the above'.",
-        "Do not require outside knowledge beyond the passage.",
-        "Every choice must be a complete, grammatically correct English sentence or semantically complete clause (NO truncated endings)."
-      ]
-    },
-    {
-      "step": 3,
-      "name": "answers_and_explanations",
-      "instructions": [
-        "Provide answers for all 5 questions in the section [정답과 해설].",
-        "For each item: 'Correct Answer: ①-⑤' and a Korean explanation.",
-        "Explanations must be short, passage-grounded, and clear (recommended 2-5 sentences).",
-        "Do not quote long parts of the passage; paraphrase instead.",
-        "Briefly mention why key distractors are wrong when helpful."
-      ]
-    }
+  "rules": [
+    "Questions in Korean, choices in English (①-⑤).",
+    "Each choice must be complete (no truncation).",
+    "No outside knowledge required.",
+    "No 'All/None of the above'.",
+    "In [문제], do NOT print '1.' '2.' etc.",
+    "Choices must be plain lines starting with one space + ①~⑤ (no '-' bullets).",
+    "Output sections must be exactly: [원서 지문] -> [문제] -> [정답과 해설]."
   ],
-  "output_format_strict": {
-    "must_match_exact_structure": true,
-    "rules": [
-      "Output must be valid Markdown plain text suitable for a .txt file.",
-      "Output must contain ONLY these sections in this exact order: [원서 지문] -> [문제] -> [정답과 해설].",
-      "Do NOT output [어휘] section at all.",
-      "Do NOT add extra headings beyond the required labels.",
-      "Do NOT add numbering like '1.' '2.' before questions in the [문제] section.",
-      "Under [문제], print questions as separate blocks: Question line, then five choice lines.",
-      "Choice lines must start with a single space then ①/②/③/④/⑤ (exactly as shown).",
-      "Do NOT use '-' bullets for choices.",
-      "Ensure no duplicated option numbers within a question.",
-      "Ensure option numbering is exactly ① ② ③ ④ ⑤ in order.",
-      "Prevent truncation: no option may end with incomplete phrases like '... of'."
-    ],
-    "template": [
-      "[원서 지문]",
-      "{PASSAGE_TEXT}",
-      "",
-      "[문제]",
-      "{KQ1}",
-      " ① {Q1O1}",
-      " ② {Q1O2}",
-      " ③ {Q1O3}",
-      " ④ {Q1O4}",
-      " ⑤ {Q1O5}",
-      "",
-      "{KQ2}",
-      " ① {Q2O1}",
-      " ② {Q2O2}",
-      " ③ {Q2O3}",
-      " ④ {Q2O4}",
-      " ⑤ {Q2O5}",
-      "",
-      "{KQ3}",
-      " ① {Q3O1}",
-      " ② {Q3O2}",
-      " ③ {Q3O3}",
-      " ④ {Q3O4}",
-      " ⑤ {Q3O5}",
-      "",
-      "{KQ4}",
-      " ① {Q4O1}",
-      " ② {Q4O2}",
-      " ③ {Q4O3}",
-      " ④ {Q4O4}",
-      " ⑤ {Q4O5}",
-      "",
-      "{KQ5}",
-      " ① {Q5O1}",
-      " ② {Q5O2}",
-      " ③ {Q5O3}",
-      " ④ {Q5O4}",
-      " ⑤ {Q5O5}",
-      "",
-      "[정답과 해설]",
-      "",
-      "1. Correct Answer: {A1}",
-      "   Explanation: {E1}",
-      "",
-      "2. Correct Answer: {A2}",
-      "   Explanation: {E2}",
-      "",
-      "3. Correct Answer: {A3}",
-      "   Explanation: {E3}",
-      "",
-      "4. Correct Answer: {A4}",
-      "   Explanation: {E4}",
-      "",
-      "5. Correct Answer: {A5}",
-      "   Explanation: {E5}"
-    ]
-  },
-  "final_quality_gate": [
-    "Check that [원서 지문], [문제], [정답과 해설] labels exist exactly once and in that order.",
-    "Check that [어휘] does NOT appear anywhere.",
-    "Check there are exactly 5 questions and each has exactly 5 options labeled ①-⑤.",
-    "Check no option is truncated or duplicated, and English is grammatical.",
-    "Check answers follow distribution rule: no consecutive identical correct numbers.",
-    "Check formatting matches the template: no bullets for options, no question numbering in [문제]."
+  "question_mix": "At least 1 main idea, 2 detail, 1 inference, 1 vocab-in-context/reference.",
+  "output_template": [
+    "[원서 지문]",
+    "{PASSAGE_TEXT}",
+    "",
+    "[문제]",
+    "{KQ1}",
+    " ① {Q1O1}",
+    " ② {Q1O2}",
+    " ③ {Q1O3}",
+    " ④ {Q1O4}",
+    " ⑤ {Q1O5}",
+    "",
+    "{KQ2}",
+    " ① {Q2O1}",
+    " ② {Q2O2}",
+    " ③ {Q2O3}",
+    " ④ {Q2O4}",
+    " ⑤ {Q2O5}",
+    "",
+    "{KQ3}",
+    " ① {Q3O1}",
+    " ② {Q3O2}",
+    " ③ {Q3O3}",
+    " ④ {Q3O4}",
+    " ⑤ {Q3O5}",
+    "",
+    "{KQ4}",
+    " ① {Q4O1}",
+    " ② {Q4O2}",
+    " ③ {Q4O3}",
+    " ④ {Q4O4}",
+    " ⑤ {Q4O5}",
+    "",
+    "{KQ5}",
+    " ① {Q5O1}",
+    " ② {Q5O2}",
+    " ③ {Q5O3}",
+    " ④ {Q5O4}",
+    " ⑤ {Q5O5}",
+    "",
+    "[정답과 해설]",
+    "1. Correct Answer: {A1}",
+    "   Explanation: {E1}",
+    "",
+    "2. Correct Answer: {A2}",
+    "   Explanation: {E2}",
+    "",
+    "3. Correct Answer: {A3}",
+    "   Explanation: {E3}",
+    "",
+    "4. Correct Answer: {A4}",
+    "   Explanation: {E4}",
+    "",
+    "5. Correct Answer: {A5}",
+    "   Explanation: {E5}"
   ],
-  "system_message_to_model": "Follow the output template strictly. Do not add extra commentary or alternative formats. If any constraint is violated, revise before finalizing."
+  "system_note": "Follow template exactly; if any rule is violated, self-correct before final output."
 }
