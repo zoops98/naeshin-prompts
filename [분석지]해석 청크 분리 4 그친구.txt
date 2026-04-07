@@ -15,9 +15,9 @@
 영어문장
 (전체 한글 번역)
 
-누적 청크 1
-누적 청크 2
-누적 청크 3
+o 누적 청크 1
+o 누적 청크 2
+o 누적 청크 3
 ...
 
 쉬운 설명 2~4문장
@@ -34,14 +34,15 @@ A / B / C / D
 
 6. 각 누적 청크 줄에서는 영어와 한국어를 함께 대응시켜 제시하세요.
 예:
-Body Mass Index (BMI) (체질량 지수(BMI)는)
-Body Mass Index (BMI) / is a number (체질량 지수(BMI)는 / 하나의 숫자입니다)
-Body Mass Index (BMI) / is a number / calculated from a child's weight and height. (체질량 지수(BMI)는 / 하나의 숫자입니다 / 아이의 체중과 신장으로 계산된)
+o Body Mass Index (BMI) (체질량 지수(BMI)는)
+o Body Mass Index (BMI) / is a number (체질량 지수(BMI)는 / 하나의 숫자입니다)
+o Body Mass Index (BMI) / is a number / calculated from a child's weight and height. (체질량 지수(BMI)는 / 하나의 숫자입니다 / 아이의 체중과 신장으로 계산된)
 
 7. 쉬운 설명은 학습이 느린 학생도 이해할 수 있도록 아주 쉬운 말로 2~4문장으로 쓰세요.
 - 어려운 말은 피하세요.
 - 원문에 없는 내용은 함부로 추가하지 마세요.
 - 실제 교사가 설명하듯 자연스럽게 쓰세요.
+- 쉬운 설명 부분에는 'o' 표시를 붙이지 마세요.
 
 ## 절대 금지 사항
 
@@ -51,7 +52,8 @@ School assignments (학교 과제는)
 have typically required (일반적으로 요구해 왔습니다)
 that students work alone. (학생들이 혼자서 작업하도록)
 
-2. 불릿(-, •)이나 번호 목록을 절대 사용하지 마세요.
+2. '-', '•' 등의 불릿 기호나 번호 목록을 절대 사용하지 마세요.
+- 단, 누적 청크 앞의 'o '는 반드시 사용하세요.
 
 3. [피라미드식 누적 청크], [쉬운 설명] 같은 소제목을 절대 쓰지 마세요.
 
@@ -60,42 +62,36 @@ that students work alone. (학생들이 혼자서 작업하도록)
 5. 반드시 아래 4개만 출력하세요.
 - 청크가 들어간 전체 영어문장
 - 전체 한글 번역
-- 누적형 피라미드 청크
-- 쉬운 설명
+- 앞에 'o '가 붙은 누적형 피라미드 청크
+- 'o ' 없이 작성한 쉬운 설명
 
-## 출력 형식 고정
+## 추가 출력 규칙
 
-영어문장
-(전체 한글 번역)
-
-첫 번째 누적 청크
-두 번째 누적 청크
-세 번째 누적 청크
-...
-마지막 누적 청크
-
-쉬운 설명
-
-## 출력 예시
-
-Body Mass Index (BMI) / is a number / calculated from a child's weight and height.
-(체질량 지수(BMI)는 아이의 체중과 신장으로 계산된 하나의 숫자입니다.)
-
-Body Mass Index (BMI) (체질량 지수(BMI)는)
-Body Mass Index (BMI) / is a number (체질량 지수(BMI)는 / 하나의 숫자입니다)
-Body Mass Index (BMI) / is a number / calculated from a child's weight and height. (체질량 지수(BMI)는 / 하나의 숫자입니다 / 아이의 체중과 신장으로 계산된)
-
-BMI는 아이의 몸무게와 키를 가지고 계산하는 숫자예요.
-이 숫자를 통해 아이의 몸 상태를 대략적으로 알 수 있습니다.
+- 첫 줄의 전체 영어문장과 그 아래의 전체 한글 번역 앞에는 아무 표시도 붙이지 마세요.
+- 그 아래에 나오는 모든 누적형 피라미드 청크 줄의 맨 앞에는 반드시 'o '를 붙이세요.
+- 쉬운 설명의 각 문장 앞에는 아무 표시도 붙이지 마세요.
+- 전체 영어문장, 전체 한글 번역, 쉬운 설명 앞에는 절대로 'o '를 붙이지 마세요.
+- 누적 청크에서만 'o '를 사용하세요.
 
 ## self-check
 출력하기 전에 반드시 스스로 확인하세요.
 
 - 나는 의미단위별 개별 해석 목록을 출력하지 않았는가?
-- 나는 불릿(-)을 사용하지 않았는가?
+- 나는 누적 청크에만 'o '를 붙였는가?
+- 나는 쉬운 설명에는 'o '를 붙이지 않았는가?
 - 나는 소제목을 쓰지 않았는가?
-- 나는 누적형 청크만 출력했는가?
+- 나는 불필요한 불릿이나 번호를 쓰지 않았는가?
 
-위 4가지 중 하나라도 어기면 전체를 다시 작성하세요.
+위 항목 중 하나라도 어기면 전체를 다시 작성하세요.
 
-전체 번역 아래에는, 의미 단위로 나누어진 각각의 영어어구와 그에 맞는 한국어 해석을 한 줄씩 제시하세요.
+## 출력 예시
+
+School assignments / have typically required / that students work alone.
+(학교 과제는 일반적으로 학생들이 혼자서 작업하도록 요구해왔습니다.)
+
+o School assignments (학교 과제는)
+o School assignments / have typically required (학교 과제는 / 일반적으로 요구해왔습니다)
+o School assignments / have typically required / that students work alone. (학교 과제는 / 일반적으로 요구해왔습니다 / 학생들이 혼자서 작업하도록)
+
+예전에는 학교에서 숙제를 내줄 때 학생들이 혼자서 하도록 시켰어요.
+친구들과 같이 하는 게 아니라, 자기 혼자 힘으로 문제를 해결하라는 뜻이었죠.
