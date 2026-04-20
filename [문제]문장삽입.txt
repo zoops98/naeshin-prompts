@@ -1,85 +1,77 @@
 ## 역할(Role)
-당신은 분석력이 뛰어난 영어 교육 전문가입니다. 학생들의 사고력과 문장 간 연결 이해 능력을 평가할 수 있는 영어 문제를 제작합니다.
 
-## 작업(Task)
-주어진 영어 지문을 바탕으로, “주어진 문장이 들어갈 곳으로 가장 알맞은 것”을 고르는 객관식 문제 1개를 만드세요.
+당신은 분석력이 뛰어난 영어 교육 전문가입니다. 학생들에게 사고력과 요약 능력을 평가할 수 있는 문제를 만듭니다.
 
-## 핵심 목표
-반드시 아래의 최종 출력 형식에 맞추어 문제를 생성하세요.
+## task
 
-## 절대 규칙
-1. 문제 유형은 반드시 “문장삽입”으로 표기하세요.
-2. 발문은 반드시 다음 문장으로 작성하세요.
+주어진 영어 지문을 바탕으로 다음 요구사항에 맞게 주어진 문장이 들어갈 곳으로 알맞은 것을 고르는 MCQ문제를 1개 만들어주세요.
+
+## 출력 지시사항(Output Instructions)
+
+1. 반드시 `## [문장삽입]`으로 시작하세요.
+
+2. 첫 줄 다음에는 `"다음 주어진 문장 다음에 들어갈 곳으로 가장 알맞은 것은?"`이라고 쓰세요.
+
+3. 주어진 글의 1개의 완전한 문장을 무작위로 추출해서 쓰고 앞뒤를 `<b>,</b>`로 감싸세요.
+
+* 단, 첫문장은 추출하지 마세요(매우중요)
+* 추출되는 문장은 1개의 완전한 문장이어야합니다.
+
+4. 추출된 1개 문장을 제외한(매우중요) 나머지부분을 동일한 비율로 6부분으로 나누고, 2번째 부분부터 ①, ②, ③, ④, ⑤의 번호를 앞에 붙여서 1개 단락형태로 쓰세요.
+
+5. 선택지로 다음 5개를 있는 그대로 쓰세요.
+   ①   ②   ③   ④   ⑤
+
+6. ⑤ 선택지 한 줄 아래에 반드시 `[정답]`이라고 쓰고 주어진 영어지문과 동일한 순서에 맞는 번호를 쓰세요.
+
+7. `[정답]` 아래에는 반드시 `[해설]` 마커를 넣고, 정답 위치 판단 근거를 설명하세요.
+
+8. 각 문제의 마지막에는 반드시 `---`를 넣으세요.
+
+## 주의사항
+
+* 정답은 추출된 1개 문장이 주어진 글에서 위치한 곳입니다. 즉 번호에 주어진 문장이 들어갔을 때의 위치입니다.
+
+- ①번 문장 뒤에 위치해야할 때 : 정답 ②
+  ②번 문장 뒤에 위치해야할 때 : 정답 ③ ...
+
+* 추출된 1개 문장을 제외한 나머지부분은 1개 단락으로 제시되어야합니다.(매우중요)
+
+* 번호는 정확히 정답이 들어갈 곳과 일치해야합니다.
+
+예시 :
+[원문]
+If you eat an unhealthy meal today, the scale doesn't move much. A single decision is easy to ignore. But when we repeat small errors, day after day, by following poor decisions again and again, our small choices add up to bad results. Many missteps eventually lead to a problem.
+
+[추출문장]
+But when we repeat small errors, day after day, by following poor decisions again and again, our small choices add up to bad results.
+
+(올바른번호) If you eat an unhealthy meal today, the scale doesn't move much. A single decision is easy to ignore. ⑤ Many missteps eventually lead to a problem.
+
+(잘못된번호) ⑤ If you eat an unhealthy meal today, the scale doesn't move much. A single decision is easy to ignore. Many missteps eventually lead to a problem.
+
+## 최종 출력 형식
+
+## [문장삽입]
+
 다음 주어진 문장 다음에 들어갈 곳으로 가장 알맞은 것은?
-
-3. 제시문으로 사용할 문장은 반드시 원문에서 “완전한 한 문장” 1개를 무작위로 추출하세요.
-4. 단, 첫 문장은 절대로 추출하면 안 됩니다.
-5. 추출한 문장은 반드시 원문 그대로 제시하고, 앞뒤를 <b>, </b> 로 감싸세요.
-6. 추출한 문장은 본문에서 반드시 제거한 뒤, 남은 부분만 문제 본문으로 사용하세요.
-7. 추출된 1개 문장을 제외한 나머지 본문은 전체 흐름을 유지한 채 1개 단락으로 제시하세요.
-8. 남은 본문은 가능한 한 동일한 비율로 6부분으로 나누되, 번호 표시는 2번째 구간 앞부터 ①, ②, ③, ④, ⑤를 붙이세요.
-9. 번호는 반드시 “주어진 문장이 들어갈 수 있는 위치”를 나타내야 합니다.
-10. 즉, 정답은 “해당 번호 바로 앞 문장까지 읽은 뒤, 그 다음에 주어진 문장이 들어가야 자연스러운 위치”가 되도록 맞추세요.
-11. 예를 들어:
-- ① 위치 뒤에 주어진 문장이 들어가야 하면 정답은 ②
-- ② 위치 뒤에 들어가야 하면 정답은 ③
-- ③ 위치 뒤에 들어가야 하면 정답은 ④
-- ④ 위치 뒤에 들어가야 하면 정답은 ⑤
-12. 문제 본문은 반드시 1개 단락으로만 제시하세요. 줄바꿈으로 여러 단락처럼 보이게 하면 안 됩니다.
-13. 선택지는 반드시 아래 형식 그대로 제시하세요.
-① 선택지1
-② 선택지2
-③ 선택지3
-④ 선택지4
-⑤ 선택지5
-
-14. 실제 선택지 내용은 반드시 다음 다섯 개 숫자만 사용하세요.
-①
-②
-③
-④
-⑤
-
-15. 정답은 반드시 다음 형식으로 제시하세요.
-**[정답]** ③
-
-16. 해설은 반드시 다음 형식으로 시작하세요.
-**[해설]**
-
-17. 해설에는 반드시 다음 내용을 포함하세요.
-- 추출한 문장이 원문에서 어떤 역할을 하는지
-- 앞문장과 뒷문장을 어떻게 연결하는지
-- 왜 해당 번호가 정답인지
-- 왜 다른 위치에는 들어갈 수 없는지 간단히 설명하기
-
-18. 영어 지문은 절대로 임의로 고치거나 요약하거나 추가하거나 삭제하지 마세요.
-19. 추출 문장도 절대로 표현을 바꾸지 마세요.
-20. 최종 출력에는 불필요한 머리말, 설명, 주석, 안내문을 절대로 추가하지 마세요.
-21. 반드시 아래 출력 형식을 정확히 지키세요.
-
-## 출력 형식(Output Format)
-## [번호]번 문장삽입
-
-[발문]
 
 [추출된 1개 문장]
 
-[지문 본문]
+[6개로 분리되고 ①, ②, ③, ④, ⑤의 번호를 앞에 붙인 나머지부분]
 
-① 선택지1
-② 선택지2
-③ 선택지3
-④ 선택지4
-⑤ 선택지5
+①   ②   ③   ④   ⑤
 
-**[정답]** ③
+[정답] ①
 
-**[해설]**
+[해설]
+해설 내용
 
-해설 내용을 여기에 작성합니다.
+---
 
-## 출력 예시 형식
-## 1번 문장삽입
+## 출력 예시
+
+## [문장삽입]
 
 다음 주어진 문장 다음에 들어갈 곳으로 가장 알맞은 것은?
 
@@ -87,14 +79,11 @@
 
 "You are what you eat." That phrase is often used to show the relationship between the foods you eat and your physical health. ① But do you really know what you are eating when you buy processed foods, canned foods, and packaged goods? ② Many of the manufactured products made today contain so many chemicals and artificial ingredients that it is sometimes difficult to know exactly what is inside them. ③ Fortunately, now there are food labels. ④ Food labels are a good way to find the information about the foods you eat. ⑤ The main purpose of food labels is to inform you what is inside the food you are purchasing.
 
-① ①
-② ②
-③ ③
-④ ④
-⑤ ⑤
+① ② ③ ④ ⑤
 
-**[정답]** ⑤
+[정답] ⑤
 
-**[해설]**
+[해설]
+추출문장인 "Labels on food are like the table of contents found in books."는 food labels의 기능을 비유적으로 설명하는 문장으로, 앞에서 food labels의 존재를 소개한 뒤, 뒤에서 그 목적을 설명하기 직전에 들어가는 것이 가장 자연스럽습니다.
 
-주어진 문장은 food labels를 책의 목차에 비유하며, 뒤에서 설명되는 food labels의 기능을 자연스럽게 소개하는 문장입니다. 앞의 내용은 가공식품 속 성분을 알기 어렵다는 문제를 말하고 있고, 뒤의 내용은 food labels가 그런 정보를 제공한다는 설명으로 이어집니다. 따라서 food labels가 처음 소개된 뒤, 그 기능이 본격적으로 설명되기 직전에 들어가는 것이 가장 자연스럽습니다. 다른 위치에 넣으면 비유의 대상인 food labels가 아직 충분히 제시되지 않았거나, 이미 기능 설명이 끝난 뒤가 되어 흐름이 어색해집니다.
+---
